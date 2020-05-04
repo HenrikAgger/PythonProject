@@ -6,19 +6,19 @@ import matplotlib.pyplot as plt
 
 def read_csv(path):
     # Read the file
-    diabetes_data = pd.read_csv(path)
-    diabetes_data.dropna() # No NAN values
-    return diabetes_data
+    df = pd.read_csv(path)
+    df.dropna() # No NAN values
+    return df
 
 
-def negative_positive(diabetes_data):
+def negative_positive(df):
     # convert class tested_negative or tested_positive to 0 or 1
     label_enc = preprocessing.LabelEncoder()
-    diabetes_data['class'] = label_enc.fit_transform(diabetes_data['class'].astype(str))
-    return diabetes_data
+    df['class'] = label_enc.fit_transform(df['class'].astype(str))
+    return df
 
 
-def plot_corr(df,size=11): 
+def plot_corr(df,size=10): 
     # Yellow means that they are highly correlated
     corr = df.corr() 
     fig, ax = plt.subplots(figsize=(size,size))

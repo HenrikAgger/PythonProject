@@ -3,16 +3,16 @@ from sklearn.impute import SimpleImputer
 from sklearn.naive_bayes import GaussianNB
 
 
-def train_data(diabetes_data):
+def train_data(df):
     feature_col_names = ['preg', 'plas', 'pres', 'skin', 'insu', 'mass', 'pedi', 'age']            
     predicted_class_names = ['class']
 
-    X = diabetes_data[feature_col_names].values 
-    y = diabetes_data[predicted_class_names].values 
+    X = df[feature_col_names].values 
+    y = df[predicted_class_names].values 
 
     split_test_size = 0.3
 
-    X_train,X_test,y_train,y_test = train_test_split(X,y,test_size = split_test_size,random_state=42)
+    X_train,X_test,y_train,y_test = train_test_split(X,y,test_size = split_test_size,random_state=10)
     return X_train, X_test, y_train,y_test
 
 def naive_bayes(X_train, y_train):
