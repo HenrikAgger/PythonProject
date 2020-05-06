@@ -1,5 +1,4 @@
 from sklearn.model_selection import train_test_split
-from sklearn.impute import SimpleImputer
 from sklearn.naive_bayes import GaussianNB
 
 
