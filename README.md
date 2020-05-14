@@ -10,6 +10,7 @@ I denne opgave vil vi vise hvordan data relateret til diabetes kan bruges til at
 - Numpy
 - Sklearn
 - Matplotlib
+- Seaborn
  
 ### Udfordringer
 Vi har især arbejdet med at:
