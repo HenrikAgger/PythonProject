@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 
 def train_data(df):
-    feature_col_names = ['preg', 'plas', 'pres', 'skin', 'insu', 'mass', 'pedi', 'age']            
+    feature_col_names = ['Pregnancies','Glucose','Bloodpressure','Skinthickness','Insulin','Bodymass','Diabetes_pedigree_function','age']            
     predicted_class_names = ['class']
 
     X = df[feature_col_names].values 
@@ -36,18 +36,27 @@ def models_acuracy_X_Test(X_test, nb_model):
 
 def zero_values(df):
     print("Total number of rows = {0}\n".format(len(df)))
-    print("Number of rows missing - Pregnancies = {0}".format(len(df.loc[df['preg'] == 0])))
-    print("Number of rows missing - Glucose = {0}".format(len(df.loc[df['plas'] == 0])))
-    print("Number of rows missing - Bloodpressure  = {0}".format(len(df.loc[df['pres'] == 0])))
-    print("Number of rows missing - Skin thickness = {0}".format(len(df.loc[df['skin'] == 0])))
-    print("Number of rows missing - Insulin = {0}".format(len(df.loc[df['insu'] == 0])))
-    print("Number of rows missing - Body mass  = {0}".format(len(df.loc[df['mass'] == 0])))
-    print("Number of rows missing - Diabetes pedigree function = {0}".format(len(df.loc[df['pedi'] == 0])))
+    print("Number of rows missing - Pregnancies = {0}".format(len(df.loc[df['Pregnancies'] == 0])))
+    print("Number of rows missing - Glucose = {0}".format(len(df.loc[df['Glucose'] == 0])))
+    print("Number of rows missing - Bloodpressure  = {0}".format(len(df.loc[df['Bloodpressure'] == 0])))
+    print("Number of rows missing - Skinthickness = {0}".format(len(df.loc[df['Skinthickness'] == 0])))
+    print("Number of rows missing - Insulin = {0}".format(len(df.loc[df['Insulin'] == 0])))
+    print("Number of rows missing - Body mass  = {0}".format(len(df.loc[df['Bodymass'] == 0])))
+    print("Number of rows missing - Diabetes_pedigree_function = {0}".format(len(df.loc[df['Diabetes_pedigree_function'] == 0])))
     print("Number of rows missing - Age  = {0}\n".format(len(df.loc[df['age'] == 0])))
 
 
 def new_dataframe(df):
-    new_df = df[(df['preg'] > 0) & (df['plas'] > 0) & (df['pres'] > 0) & (df['skin'] > 0) & (df['insu'] > 0) & (df['mass'] > 0) & (df['pedi'] > 0) & (df['age'] > 0)]
+    new_df = df[
+    (df['Pregnancies'] > 0) & 
+    (df['Glucose'] > 0) & 
+    (df['Bloodpressure'] > 0) & 
+    (df['Skinthickness'] > 0) & 
+    (df['Insulin'] > 0) & 
+    (df['Bodymass'] > 0) & 
+    (df['Diabetes_pedigree_function'] > 0) & 
+    (df['age'] > 0)
+    ]
     print("Total number of rows after cleaning = {0}".format(len(new_df)))
     dc.plot_corr(new_df) 
     new_df.corr()   # Fewer data but no zero values in the df. 
