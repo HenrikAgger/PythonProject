@@ -45,20 +45,25 @@ def zero_values(df):
     print("Number of rows missing - Diabetes_pedigree_function = {0}".format(len(df.loc[df['Diabetes_pedigree_function'] == 0])))
     print("Number of rows missing - Age  = {0}\n".format(len(df.loc[df['age'] == 0])))
 
-
 def new_dataframe(df):
+    # Because 227 patients did had 0 skinthickness, we thought it would be best to remove this columns from the df,
+    # Neither did it correlate much with other columns in the df
+    del df['Skinthickness']
+
     new_df = df[
     (df['Pregnancies'] > 0) & 
     (df['Glucose'] > 0) & 
-    (df['Bloodpressure'] > 0) & 
-    (df['Skinthickness'] > 0) & 
+    (df['Bloodpressure'] > 0) &
     (df['Insulin'] > 0) & 
     (df['Bodymass'] > 0) & 
     (df['Diabetes_pedigree_function'] > 0) & 
     (df['age'] > 0)
     ]
+    
     print("Total number of rows after cleaning = {0}".format(len(new_df)))
     dc.plot_corr(new_df) 
-    new_df.corr()   # Fewer data but no zero values in the df. 
-                # Note fx. that glycose correlates 51,6% with the class(diabetes)
+    new_df.corr()   
+    # Fewer data but no zero values in the df. 
+    # Note fx. that glycose correlates 51,6% with the class(diabetes)
     print(new_df)
+    
