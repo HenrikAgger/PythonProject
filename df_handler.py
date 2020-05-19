@@ -12,7 +12,7 @@ def read_csv(path):
     return df
 
 
-def negative_positive(df):
+def negative_positive(df): # inspired by titanic 
     # convert class tested_negative or tested_positive to 0 or 1
     label_enc = preprocessing.LabelEncoder()
     df['Class'] = label_enc.fit_transform(df['Class'].astype(str))
@@ -58,3 +58,4 @@ def new_dataframe(df):
     # Fewer data but no zero values in the df. 
     # Note fx. that glycose correlates 49% with the class(diabetes)
     
+    new_df.to_csv('newfile.csv', index=False)
