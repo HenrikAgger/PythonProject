@@ -35,11 +35,11 @@ def zero_values(df):
     print("Number of rows missing - Age  = {0}\n".format(len(df.loc[df['Age'] == 0])))
 
 
-    # https://stackoverflow.com/questions/40299055/pandas-how-to-fill-null-values-with-mean-of-a-groupby
+    # https://stackoverflow.com/questions/37506488/python-pandas-dataframe-replace-0-with-median-value
 def mean_val_insulin(df):
-    df.value = df.groupby('Class')['Insulin'].apply(lambda x: x.fillna(x.mean()))
-    df.value = df.value.fillna(df.value.mean())
-    #print(df.shape)
+    df['Insulin']=df['Insulin'].replace(0,df['Insulin'].mean())
+    df['Insulin']=df['Insulin'].apply(lambda x:round(x,2))
+    df['Diabetes_pedigree_function']=df['Diabetes_pedigree_function'].apply(lambda x:round(x,3))
 
 
     # Fewer data but no zero values in the df. 
